@@ -3,7 +3,7 @@ import {TouchableHighlight} from 'react-native'
 import styled from 'styled-components/native'
 
 import {Message} from '../model'
-import {FONT_WEIGHT_STYLE} from '../theme'
+import {FONT_WEIGHT_STYLE, GRAY} from '../theme'
 
 const Container = styled.View`
     flex-direction: row;
@@ -30,6 +30,7 @@ const Content = styled.Text`
     font-family: ${FONT_WEIGHT_STYLE[300]};
     font-size: 12px;
     line-height: 15px;
+    color: ${GRAY};
 `
 
 export const ChatMessage: React.FC<{message: Message}> = ({message: {avatar, name, message}}) => (
