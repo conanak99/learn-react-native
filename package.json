@@ -1,60 +1,62 @@
 {
-  "name": "CodeChill",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "ios7": "react-native run-ios --simulator=\"iPhone 7\"",
-    "start": "react-native start",
-    "test": "jest",
-    "devices": "xcrun simctl list devices",
-    "devtool": "react-devtools"
-  },
-  "dependencies": {
-    "axios": "^0.19.0",
-    "react": "16.9.0",
-    "react-native": "0.61.5",
-    "react-native-gesture-handler": "^1.5.2",
-    "react-native-reanimated": "^1.4.0",
-    "react-native-screens": "^2.0.0-alpha.19",
-    "react-navigation": "^4.0.10",
-    "react-navigation-tabs": "^2.6.2",
-    "styled-components": "^4.4.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.6.2",
-    "@babel/runtime": "^7.6.2",
-    "@react-native-community/eslint-config": "^0.0.5",
-    "@types/axios": "^0.14.0",
-    "@types/jest": "^24.0.18",
-    "@types/react-native": "^0.60.22",
-    "@types/react-test-renderer": "16.9.0",
-    "@types/styled-components": "^4.4.1",
-    "@typescript-eslint/eslint-plugin": "^2.11.0",
-    "@typescript-eslint/parser": "^2.11.0",
-    "babel-jest": "^24.9.0",
-    "eslint": "^6.7.2",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-react-native": "^3.8.1",
-    "jest": "^24.9.0",
-    "metro-react-native-babel-preset": "^0.56.0",
-    "prettier": "^1.19.1",
-    "react-devtools": "3.6.3",
-    "react-test-renderer": "16.9.0",
-    "typescript": "^3.6.3"
-  },
-  "jest": {
-    "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
-  }
+    "name": "CodeChill",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "android": "react-native run-android",
+        "ios": "react-native run-ios",
+        "ios7": "react-native run-ios --simulator=\"iPhone 7\"",
+        "start": "react-native start",
+        "test": "jest",
+        "devices": "xcrun simctl list devices",
+        "devtool": "react-devtools"
+    },
+    "dependencies": {
+        "axios": "^0.19.0",
+        "react": "16.9.0",
+        "react-native": "0.61.5",
+        "react-native-gesture-handler": "^1.5.2",
+        "react-native-reanimated": "^1.4.0",
+        "react-native-screens": "^2.0.0-alpha.19",
+        "react-navigation": "^4.0.10",
+        "react-navigation-tabs": "^2.6.2",
+        "styled-components": "^4.4.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.6.2",
+        "@babel/runtime": "^7.6.2",
+        "@react-native-community/eslint-config": "^0.0.5",
+        "@types/axios": "^0.14.0",
+        "@types/jest": "^24.0.18",
+        "@types/react-native": "^0.60.25",
+        "@types/react-native-vector-icons": "^6.4.4",
+        "@types/react-test-renderer": "16.9.0",
+        "@types/styled-components": "^4.4.1",
+        "@typescript-eslint/eslint-plugin": "^2.11.0",
+        "@typescript-eslint/parser": "^2.11.0",
+        "babel-jest": "^24.9.0",
+        "eslint": "^6.7.2",
+        "eslint-config-prettier": "^6.7.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "eslint-plugin-react": "^7.17.0",
+        "eslint-plugin-react-native": "^3.8.1",
+        "jest": "^24.9.0",
+        "metro-react-native-babel-preset": "^0.56.0",
+        "prettier": "^1.19.1",
+        "react-devtools": "3.6.3",
+        "react-native-vector-icons": "^6.6.0",
+        "react-test-renderer": "16.9.0",
+        "typescript": "^3.6.3"
+    },
+    "jest": {
+        "preset": "react-native",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json",
+            "node"
+        ]
+    }
 }

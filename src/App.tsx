@@ -1,37 +1,26 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
+import {createBottomTabNavigator, createMaterialTopTabNavigator} from 'react-navigation-tabs'
+import {createAppContainer} from 'react-navigation'
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {Explore} from './screens/Explore'
+import {Chat} from './screens/Chat'
+import {Matches} from './screens/Matches'
+import {Profile} from './screens/Profile'
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const Navigator = createMaterialTopTabNavigator(
+    {
+        Explore: {screen: Explore},
+        Matches: {screen: Matches},
+        Chat: {screen: Chat},
+        Profile: {screen: Profile},
+    },
+    {
+        defaultNavigationOptions: ({navigation}) => {
+            return {}
+        },
+        tabBarPosition: 'bottom',
+    },
+)
 
-const App = () => {
-  return (
-    <View>
-      <Text>Hello World</Text>
-    </View>
-  );
-};
+const App = createAppContainer(Navigator)
 
-export default App;
+export default App

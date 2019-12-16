@@ -20,7 +20,8 @@ module.exports = {
     }
   },
   env: {
-    'react-native/react-native': true
+    'react-native/react-native': true,
+    'jest': true
   },
   settings: {
     react: {
