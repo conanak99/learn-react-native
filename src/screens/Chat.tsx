@@ -1,8 +1,8 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {Container, Header} from '../components/Shared'
 
 export const Chat = () => (
-    <View>
-        <Text>Chat</Text>
-    </View>
+    <Container>
+        <Header>Chat</Header>
+    </Container>
 )
