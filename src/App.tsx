@@ -7,7 +7,7 @@ import {Explore} from './screens/Explore'
 import {Chat} from './screens/Chat'
 import {Matches} from './screens/Matches'
 import {Profile} from './screens/Profile'
-import {PRIMARY} from './theme'
+import {PRIMARY, FONT_WEIGHT_STYLE} from './theme'
 
 const Navigator = createMaterialTopTabNavigator(
     {
@@ -42,7 +42,9 @@ const Navigator = createMaterialTopTabNavigator(
         tabBarOptions: {
             showIcon: true,
             labelStyle: {
-                fontWeight: '400',
+                fontFamily: FONT_WEIGHT_STYLE[600],
+                fontSize: 10,
+                lineHeight: 12,
             },
             activeTintColor: PRIMARY,
             inactiveTintColor: 'black',

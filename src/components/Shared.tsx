@@ -17,7 +17,7 @@ export const Header = styled.Text`
     font-family: ${FONT_WEIGHT_STYLE[900]};
     font-size: 22px;
     line-height: 28px;
-    padding-bottom: 20px;
+    padding-bottom: 16px;
 `
 
 // export const Container = styled.View`

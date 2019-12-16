@@ -36,14 +36,14 @@ const Name = styled.Text`
 
 const Status = styled.Text`
     font-family: ${FONT_WEIGHT_STYLE[300]};
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 10px;
+    line-height: 13px;
 `
 
-export const MatchCard: React.FC<{match: Match}> = ({match: {imageUrl, name, isActive, lastActive}}) => (
+export const MatchCard: React.FC<{match: Match}> = ({match: {avatar, name, isActive, lastActive}}) => (
     <TouchableHighlight style={{width: '48%'}}>
         <CardContainer>
-            <Avatar source={{uri: imageUrl}}></Avatar>
+            <Avatar source={{uri: avatar}}></Avatar>
 
             <UserInfo>
                 <Name>{name}</Name>

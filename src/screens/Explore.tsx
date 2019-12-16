@@ -1,8 +1,9 @@
 import React from 'react'
 import {View, Text} from 'react-native'
+import {Container} from '../components/Shared'
 
 export const Explore = () => (
-    <View>
+    <Container>
         <Text>Explore</Text>
-    </View>
+    </Container>
 )
