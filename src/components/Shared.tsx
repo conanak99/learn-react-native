@@ -8,7 +8,7 @@ export const Container: React.FC = ({children}) => (
         useAngle
         angle={115}
         colors={[BACKGROUND_COLOR_START, BACKGROUND_COLOR_END]}
-        style={{display: 'flex', height: '100%'}}>
+        style={{display: 'flex', height: '100%', paddingTop: 40, paddingHorizontal: 20}}>
         {children}
     </LinearGradient>
 )

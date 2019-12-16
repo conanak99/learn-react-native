@@ -6,6 +6,8 @@ export const Matches = () => {
     return (
         <Container>
             <Text>Matches</Text>
+
+            <Text style={{fontFamily: 'Muli-Bold'}}>Matches with Muli Font</Text>
         </Container>
     )
 }
