@@ -32,3 +32,5 @@ export const getAllMatches = (): Match[] => [
         percent: 75,
     },
 ]
+
+export const getUserProfile = () => getAllMatches()[0]

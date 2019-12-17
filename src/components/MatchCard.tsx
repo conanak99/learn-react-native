@@ -38,10 +38,15 @@ const Status = styled.Text`
     line-height: 13px;
 `
 
-export const MatchCard: React.FC<{match: Match}> = ({match: {avatar, name, isActive, lastActive}}) => (
-    <TouchableHighlight style={{width: '48%'}} underlayColor={PRIMARY}>
+interface Props {
+    match: Match
+    onSelect: (match: Match) => void
+}
+
+export const MatchCard: React.FC<Props> = ({match: {avatar, name, isActive, lastActive}, onSelect}) => (
+    <TouchableHighlight onPress={onSelect} style={{width: '48%'}} underlayColor={PRIMARY}>
         <CardContainer>
-            <Avatar source={{uri: avatar}}></Avatar>
+            <Avatar source={{uri: avatar}} />
 
             <UserInfo>
                 <Name>{name}</Name>

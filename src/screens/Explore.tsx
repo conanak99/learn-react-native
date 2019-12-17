@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {NavigationInjectedProps} from 'react-navigation'
 import styled from 'styled-components/native'
 
 import {Container, Card} from '../components/Shared'
@@ -13,7 +13,7 @@ const CardBehindLayer = styled(Card)`
     z-index: -1;
 `
 
-export const Explore = () => {
+export const Explore: React.FC<NavigationInjectedProps> = ({navigation}) => {
     const matches = getAllMatches()
     const [index, setIndex] = React.useState(0)
 
@@ -23,7 +23,12 @@ export const Explore = () => {
 
     return (
         <Container>
-            <MatchFullCard match={matches[index]} onAccepted={nextMatch} onRejected={nextMatch} />
+            <MatchFullCard
+                match={matches[index]}
+                onAvatarClicked={match => navigation.navigate('Profile', {match})}
+                onAccepted={nextMatch}
+                onRejected={nextMatch}
+            />
 
             <CardBehindLayer />
         </Container>

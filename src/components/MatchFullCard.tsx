@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 
 import {Match} from '../model'
 import {FONT_WEIGHT_STYLE, GRAY} from '../theme'
-import {GradientTag, Button, GradientIcon, Card} from './Shared'
+import {Button, GradientIcon, Card, MatchTag} from './Shared'
+import {TouchableHighlight} from 'react-native'
 
 const CardContainer = styled(Card)`
     width: 100%;
@@ -36,18 +37,6 @@ const Bio = styled.Text`
     height: 32px;
 `
 
-const MatchPercent = styled(GradientTag)`
-    height: 30;
-    width: 130;
-    margin: -15px auto;
-`
-const MatchText = styled.Text`
-    color: white;
-    font-family: ${FONT_WEIGHT_STYLE[800]};
-    font-size: 14px;
-    line-height: 18px;
-`
-
 const Controls = styled.View`
     margin: 0 auto;
     width: 50%;
@@ -59,19 +48,18 @@ const Controls = styled.View`
 
 interface Props {
     match: Match
+    onAvatarClicked: (match: Match) => void
     onAccepted: (match: Match) => void
     onRejected: (match: Match) => void
 }
 
-export const MatchFullCard: React.FC<Props> = ({match, onAccepted, onRejected}) => (
+export const MatchFullCard: React.FC<Props> = ({match, onAvatarClicked, onAccepted, onRejected}) => (
     <CardContainer>
-        <Avatar source={{uri: match.avatar}}></Avatar>
+        <TouchableHighlight onPress={() => onAvatarClicked(match)}>
+            <Avatar source={{uri: match.avatar}} />
+        </TouchableHighlight>
 
-        <MatchPercent>
-            <MatchText>
-                <Icon name="ios-heart" color="white" /> {match.percent}% Match!
-            </MatchText>
-        </MatchPercent>
+        <MatchTag percent={match.percent} />
 
         <UserInfo>
             <Name>{match.name}</Name>

@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleProp, ViewStyle} from 'react-native'
+import {StyleProp, ViewStyle, TouchableHighlight} from 'react-native'
 import styled from 'styled-components/native'
 import MaskedView from '@react-native-community/masked-view'
 import LinearGradient from 'react-native-linear-gradient'
@@ -72,3 +72,23 @@ export const Content = styled.Text`
     line-height: 15px;
     color: ${GRAY};
 `
+
+const MatchPercent = styled(GradientTag)`
+    height: 30;
+    width: 130;
+    margin: -15px auto;
+    z-index: 2;
+`
+const MatchText = styled.Text`
+    color: white;
+    font-family: ${FONT_WEIGHT_STYLE[800]};
+    font-size: 14px;
+    line-height: 18px;
+`
+export const MatchTag: React.FC<{percent: number}> = ({percent}) => (
+    <MatchPercent>
+        <MatchText>
+            <Icon name="ios-heart" color="white" /> {percent}% Match!
+        </MatchText>
+    </MatchPercent>
+)
