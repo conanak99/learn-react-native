@@ -30,11 +30,12 @@ const Name = styled.Text`
     font-family: ${FONT_WEIGHT_STYLE[900]};
 `
 const Bio = styled.Text`
+    text-align: center;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 20px;
     font-family: ${FONT_WEIGHT_STYLE[300]};
     color: ${GRAY};
-    height: 32px;
+    height: 40px;
 `
 
 const Controls = styled.View`

@@ -1,4 +1,5 @@
 import React from 'react'
+import {YellowBox} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs'
 import {createAppContainer} from 'react-navigation'
@@ -31,8 +32,6 @@ const Navigator = createMaterialTopTabNavigator(
         },
         Profile: {
             screen: Profile,
-            params: {a: 1},
-
             navigationOptions: {
                 tabBarIcon: e => <Icon name="ios-contact" color={e.tintColor} size={20} />,
             },
@@ -41,6 +40,7 @@ const Navigator = createMaterialTopTabNavigator(
     {
         tabBarPosition: 'bottom',
         initialRouteName: 'Explore',
+        backBehavior: 'history',
         tabBarOptions: {
             showIcon: true,
             labelStyle: {
@@ -66,3 +66,9 @@ const Navigator = createMaterialTopTabNavigator(
 const App = createAppContainer(Navigator)
 
 export default App
+
+// TODO: Remove when fixed
+YellowBox.ignoreWarnings([
+    'VirtualizedLists should never be nested', //https://github.com/GeekyAnts/NativeBase/issues/2947
+    'Task orphaned for request ',
+])

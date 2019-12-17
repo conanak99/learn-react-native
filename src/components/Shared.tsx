@@ -69,7 +69,7 @@ export const Name = styled.Text`
 export const Content = styled.Text`
     font-family: ${FONT_WEIGHT_STYLE[300]};
     font-size: 12px;
-    line-height: 15px;
+    line-height: 20px;
     color: ${GRAY};
 `
 

@@ -43,13 +43,15 @@ interface Props {
     onSelect: (match: Match) => void
 }
 
-export const MatchCard: React.FC<Props> = ({match: {avatar, name, isActive, lastActive}, onSelect}) => (
+export const MatchCard: React.FC<Props> = ({match: {avatar, age, name, isActive, lastActive}, onSelect}) => (
     <TouchableHighlight onPress={onSelect} style={{width: '48%'}} underlayColor={PRIMARY}>
         <CardContainer>
             <Avatar source={{uri: avatar}} />
 
             <UserInfo>
-                <Name>{name}</Name>
+                <Name>
+                    {name} ({age})
+                </Name>
 
                 {isActive && (
                     <Status>

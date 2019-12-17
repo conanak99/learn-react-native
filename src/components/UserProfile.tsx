@@ -7,6 +7,8 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import {Card, Name, Content, Container, MatchTag, GradientTag} from '../components/Shared'
 import {Match} from '../model'
 import {FONT_WEIGHT_STYLE} from '../theme'
+import {usePromise} from '../hooks'
+import {getImages} from '../services/imageService'
 
 const Avatar = styled.Image`
     width: 100%;
@@ -66,30 +68,40 @@ const BackButton = styled.TouchableOpacity`
     justify-content: center;
 `
 
+const FullInfo = styled.View`
+    width: 100%;
+    padding-left: 10px;
+    margin-top: 10px;
+`
+
 interface Props {
     profile: Match
     isOther?: boolean
 }
 
 const UserProfileComponent: React.FC<Props & NavigationInjectedProps> = ({profile, isOther, navigation}) => {
-    let scrollView: ScrollView | null = null
+    const [bgHeight, setBgHeight] = React.useState(600)
+    const defaultPhotos = [
+        'https://source.unsplash.com/random/400x600',
+        'https://source.unsplash.com/random/401x600',
+        'https://source.unsplash.com/random/400x601',
+        'https://source.unsplash.com/random/401x601',
+    ]
+    const [photos, setPhotos] = React.useState(defaultPhotos)
 
+    let scrollView: ScrollView | null = null
+    const {avatar, name, age, bio, percent, fullInfo} = profile
     React.useEffect(() => {
         if (scrollView) {
             scrollView.scrollTo({x: 0, y: 0, animated: false})
         }
-    }, [profile, scrollView])
 
-    const [bgHeight, setBgHeight] = React.useState(600)
-
-    const {avatar, name, bio, percent} = profile
-    const photos = [
-        'https://source.unsplash.com/random/400x600',
-        'https://source.unsplash.com/random/401x600',
-        'https://source.unsplash.com/random/402x600',
-        'https://source.unsplash.com/random/403x600',
-    ]
-
+        if (isOther) {
+            getImages(profile.name).then(images => setPhotos(images))
+        } else {
+            setPhotos(defaultPhotos)
+        }
+    }, [profile])
     return (
         <ScrollView
             ref={view => {
@@ -102,6 +114,7 @@ const UserProfileComponent: React.FC<Props & NavigationInjectedProps> = ({profil
             {isOther && (
                 <BackButton
                     onPress={() => {
+                        //This only work with react-navigation-tabs ver 1.0.0
                         navigation.goBack()
                     }}>
                     <Icon name="ios-arrow-back" color="white" size={40} />
@@ -117,8 +130,30 @@ const UserProfileComponent: React.FC<Props & NavigationInjectedProps> = ({profil
                     {isOther && <MatchTag percent={percent} />}
                     <UserInfo>
                         {isOther && <View style={{height: 10}} />}
-                        <Name>{name}</Name>
+                        <Name>
+                            {name} ({age} tuổi)
+                        </Name>
                         <Content>{bio}</Content>
+                        {fullInfo && (
+                            <FullInfo>
+                                {fullInfo.blood.length > 0 && (
+                                    <Content>
+                                        <Icon name="ios-water" /> Nhóm máu: {fullInfo.blood}
+                                    </Content>
+                                )}
+                                {fullInfo.birthPlace.length > 0 && (
+                                    <Content>
+                                        <Icon name="ios-planet" /> Nguyên quán: {fullInfo.birthPlace}
+                                    </Content>
+                                )}
+                                <Content>
+                                    <Icon name="ios-woman" /> Chiều cao: {fullInfo.height}
+                                </Content>
+                                <Content>
+                                    <Icon name="ios-heart" /> Số đo 3 vòng: {fullInfo.threeSizes}
+                                </Content>
+                            </FullInfo>
+                        )}
                     </UserInfo>
 
                     {isOther && (
