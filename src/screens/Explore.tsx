@@ -2,18 +2,15 @@ import React from 'react'
 import {View, Text} from 'react-native'
 import styled from 'styled-components/native'
 
-import {Container} from '../components/Shared'
+import {Container, Card} from '../components/Shared'
 import {MatchFullCard} from '../components/MatchFullCard'
 import {getAllMatches} from '../services/matchService'
 
-const CardBehindLayer = styled.View`
+const CardBehindLayer = styled(Card)`
     width: 90%;
-    background-color: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     height: 20;
     margin: -9px auto;
     z-index: -1;
-    border-radius: 15px;
 `
 
 export const Explore = () => {

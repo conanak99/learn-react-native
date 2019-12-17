@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import {Match} from '../model'
 import {FONT_WEIGHT_STYLE, GRAY} from '../theme'
-import {GradientTag, Button, GradientIcon} from './Shared'
+import {GradientTag, Button, GradientIcon, Card} from './Shared'
 
 interface Props {
     match: Match
@@ -39,11 +39,8 @@ export const MatchFullCard: React.FC<Props> = ({match, onAccepted, onRejected}) 
     </CardContainer>
 )
 
-const CardContainer = styled.View`
+const CardContainer = styled(Card)`
     width: 100%;
-    background-color: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    border-radius: 15px;
     padding: 15px;
 `
 

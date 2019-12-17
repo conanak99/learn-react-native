@@ -23,6 +23,12 @@ export const Header = styled.Text`
     padding-bottom: 16px;
 `
 
+export const Card = styled.View`
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+`
+
 const Gradient = styled(LinearGradient)`
     border-radius: 20;
     justify-content: center;
