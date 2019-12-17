@@ -6,39 +6,6 @@ import {Match} from '../model'
 import {FONT_WEIGHT_STYLE, GRAY} from '../theme'
 import {GradientTag, Button, GradientIcon, Card} from './Shared'
 
-interface Props {
-    match: Match
-    onAccepted: (match: Match) => void
-    onRejected: (match: Match) => void
-}
-
-export const MatchFullCard: React.FC<Props> = ({match, onAccepted, onRejected}) => (
-    <CardContainer>
-        <Avatar source={{uri: match.avatar}}></Avatar>
-
-        <MatchPercent>
-            <MatchText>
-                <Icon name="ios-heart" color="white" /> {match.percent}% Match!
-            </MatchText>
-        </MatchPercent>
-
-        <UserInfo>
-            <Name>{match.name}</Name>
-            <Bio>{match.bio}</Bio>
-        </UserInfo>
-
-        <Controls>
-            <Button onPress={() => onAccepted(match)}>
-                <GradientIcon style={{marginTop: 2}} name="ios-heart" size={35} />
-            </Button>
-
-            <Button onPress={() => onRejected(match)}>
-                <Icon style={{marginTop: 5}} name="ios-close" size={50} />
-            </Button>
-        </Controls>
-    </CardContainer>
-)
-
 const CardContainer = styled(Card)`
     width: 100%;
     padding: 15px;
@@ -89,3 +56,36 @@ const Controls = styled.View`
     flex-direction: row;
     padding: 20px 0 10px;
 `
+
+interface Props {
+    match: Match
+    onAccepted: (match: Match) => void
+    onRejected: (match: Match) => void
+}
+
+export const MatchFullCard: React.FC<Props> = ({match, onAccepted, onRejected}) => (
+    <CardContainer>
+        <Avatar source={{uri: match.avatar}}></Avatar>
+
+        <MatchPercent>
+            <MatchText>
+                <Icon name="ios-heart" color="white" /> {match.percent}% Match!
+            </MatchText>
+        </MatchPercent>
+
+        <UserInfo>
+            <Name>{match.name}</Name>
+            <Bio>{match.bio}</Bio>
+        </UserInfo>
+
+        <Controls>
+            <Button onPress={() => onAccepted(match)}>
+                <GradientIcon style={{marginTop: 2}} name="ios-heart" size={35} />
+            </Button>
+
+            <Button onPress={() => onRejected(match)}>
+                <Icon style={{marginTop: 5}} name="ios-close" size={50} />
+            </Button>
+        </Controls>
+    </CardContainer>
+)

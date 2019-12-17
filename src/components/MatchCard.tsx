@@ -7,26 +7,6 @@ import {Match} from '../model'
 import {FONT_WEIGHT_STYLE, PRIMARY} from '../theme'
 import {Card} from './Shared'
 
-export const MatchCard: React.FC<{match: Match}> = ({match: {avatar, name, isActive, lastActive}}) => (
-    <TouchableHighlight style={{width: '48%'}} underlayColor={PRIMARY}>
-        <CardContainer>
-            <Avatar source={{uri: avatar}}></Avatar>
-
-            <UserInfo>
-                <Name>{name}</Name>
-
-                {isActive && (
-                    <Status>
-                        <Icon name="ios-radio-button-on" color="#46A575" size={10} /> Active Now
-                    </Status>
-                )}
-
-                {!isActive && lastActive && <Status>Last seen: {lastActive.fromNow()} </Status>}
-            </UserInfo>
-        </CardContainer>
-    </TouchableHighlight>
-)
-
 const CardContainer = styled(Card)`
     flex-grow: 1;
     flex-shrink: 0;
@@ -57,3 +37,23 @@ const Status = styled.Text`
     font-size: 10px;
     line-height: 13px;
 `
+
+export const MatchCard: React.FC<{match: Match}> = ({match: {avatar, name, isActive, lastActive}}) => (
+    <TouchableHighlight style={{width: '48%'}} underlayColor={PRIMARY}>
+        <CardContainer>
+            <Avatar source={{uri: avatar}}></Avatar>
+
+            <UserInfo>
+                <Name>{name}</Name>
+
+                {isActive && (
+                    <Status>
+                        <Icon name="ios-radio-button-on" color="#46A575" size={10} /> Active Now
+                    </Status>
+                )}
+
+                {!isActive && lastActive && <Status>Last seen: {lastActive.fromNow()} </Status>}
+            </UserInfo>
+        </CardContainer>
+    </TouchableHighlight>
+)
