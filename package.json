@@ -12,6 +12,7 @@
         "devtool": "react-devtools"
     },
     "dependencies": {
+        "@react-native-community/masked-view": "^0.1.5",
         "axios": "^0.19.0",
         "moment": "^2.24.0",
         "react": "16.9.0",

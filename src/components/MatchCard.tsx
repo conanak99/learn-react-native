@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import {TouchableHighlight} from 'react-native'
 
 import {Match} from '../model'
-import {FONT_WEIGHT_STYLE} from '../theme'
+import {FONT_WEIGHT_STYLE, PRIMARY} from '../theme'
 
 const CardContainer = styled.View`
     flex-grow: 1;
@@ -18,7 +18,7 @@ const CardContainer = styled.View`
 const Avatar = styled.Image`
     width: 100%;
     border-radius: 15px;
-    min-height: 200px;
+    aspect-ratio: 0.85;
 `
 
 const UserInfo = styled.View`
@@ -41,7 +41,7 @@ const Status = styled.Text`
 `
 
 export const MatchCard: React.FC<{match: Match}> = ({match: {avatar, name, isActive, lastActive}}) => (
-    <TouchableHighlight style={{width: '48%'}}>
+    <TouchableHighlight style={{width: '48%'}} underlayColor={PRIMARY}>
         <CardContainer>
             <Avatar source={{uri: avatar}}></Avatar>
 

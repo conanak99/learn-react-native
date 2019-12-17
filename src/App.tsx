@@ -38,7 +38,7 @@ const Navigator = createMaterialTopTabNavigator(
     },
     {
         tabBarPosition: 'bottom',
-        initialRouteName: 'Matches',
+        initialRouteName: 'Explore',
         tabBarOptions: {
             showIcon: true,
             labelStyle: {

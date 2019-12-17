@@ -1,11 +1,43 @@
 import React from 'react'
-import LinearGradient from 'react-native-linear-gradient'
 import Icon from 'react-native-vector-icons/Ionicons'
 import styled from 'styled-components/native'
-import {TouchableHighlight} from 'react-native'
 
 import {Match} from '../model'
-import {FONT_WEIGHT_STYLE, GRAY, PRIMARY, SECONDARY} from '../theme'
+import {FONT_WEIGHT_STYLE, GRAY} from '../theme'
+import {GradientTag, Button, GradientIcon} from './Shared'
+
+interface Props {
+    match: Match
+    onAccepted: (match: Match) => void
+    onRejected: (match: Match) => void
+}
+
+export const MatchFullCard: React.FC<Props> = ({match, onAccepted, onRejected}) => (
+    <CardContainer>
+        <Avatar source={{uri: match.avatar}}></Avatar>
+
+        <MatchPercent>
+            <MatchText>
+                <Icon name="ios-heart" color="white" /> {match.percent}% Match!
+            </MatchText>
+        </MatchPercent>
+
+        <UserInfo>
+            <Name>{match.name}</Name>
+            <Bio>{match.bio}</Bio>
+        </UserInfo>
+
+        <Controls>
+            <Button onPress={() => onAccepted(match)}>
+                <GradientIcon style={{marginTop: 2}} name="ios-heart" size={35} />
+            </Button>
+
+            <Button onPress={() => onRejected(match)}>
+                <Icon style={{marginTop: 5}} name="ios-close" size={50} />
+            </Button>
+        </Controls>
+    </CardContainer>
+)
 
 const CardContainer = styled.View`
     width: 100%;
@@ -37,39 +69,26 @@ const Bio = styled.Text`
     line-height: 15px;
     font-family: ${FONT_WEIGHT_STYLE[300]};
     color: ${GRAY};
+    height: 32px;
 `
 
-const MatchPercent = styled(LinearGradient)`
-    border-radius: 20;
+const MatchPercent = styled(GradientTag)`
     height: 30;
     width: 130;
-    justify-content: center;
-    align-items: center;
     margin: -15px auto;
 `
 const MatchText = styled.Text`
     color: white;
     font-family: ${FONT_WEIGHT_STYLE[800]};
-
     font-size: 14px;
     line-height: 18px;
 `
 
-const Controls = styled.View``
-
-export const MatchFullCard: React.FC<{match: Match}> = ({match: {avatar, name, bio, percent}}) => (
-    <CardContainer>
-        <Avatar source={{uri: avatar}}></Avatar>
-
-        <MatchPercent useAngle angle={343.4} colors={[SECONDARY, PRIMARY]}>
-            <MatchText>
-                <Icon name="ios-heart" color="white" /> {percent}% Match!
-            </MatchText>
-        </MatchPercent>
-
-        <UserInfo>
-            <Name>{name}</Name>
-            <Bio>{bio}</Bio>
-        </UserInfo>
-    </CardContainer>
-)
+const Controls = styled.View`
+    margin: 0 auto;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px 0 10px;
+`

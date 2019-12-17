@@ -3,7 +3,7 @@ import {TouchableHighlight} from 'react-native'
 import styled from 'styled-components/native'
 
 import {Message} from '../model'
-import {FONT_WEIGHT_STYLE, GRAY} from '../theme'
+import {FONT_WEIGHT_STYLE, GRAY, PRIMARY} from '../theme'
 
 const Container = styled.View`
     flex-direction: row;
@@ -34,7 +34,7 @@ const Content = styled.Text`
 `
 
 export const ChatMessage: React.FC<{message: Message}> = ({message: {avatar, name, message}}) => (
-    <TouchableHighlight>
+    <TouchableHighlight underlayColor={PRIMARY}>
         <Container>
             <Avatar source={{uri: avatar}} />
             <UserInfo>
