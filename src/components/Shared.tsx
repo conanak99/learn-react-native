@@ -1,17 +1,18 @@
 import React from 'react'
-import LinearGradient from 'react-native-linear-gradient'
+import {StyleProp, ViewStyle} from 'react-native'
 import styled from 'styled-components/native'
-import {BACKGROUND_COLOR_END, BACKGROUND_COLOR_START, FONT_WEIGHT_STYLE, SECONDARY, PRIMARY} from '../theme'
+import MaskedView from '@react-native-community/masked-view'
+import LinearGradient from 'react-native-linear-gradient'
 import {IconProps} from 'react-native-vector-icons/Icon'
 import Icon from 'react-native-vector-icons/Ionicons'
-import MaskedView from '@react-native-community/masked-view'
 
-export const Container: React.FC = ({children}) => (
+import {BACKGROUND_COLOR_END, BACKGROUND_COLOR_START, FONT_WEIGHT_STYLE, SECONDARY, PRIMARY, GRAY} from '../theme'
+export const Container: React.FC<{style?: StyleProp<ViewStyle>}> = ({children, style}) => (
     <LinearGradient
         useAngle
         angle={115}
         colors={[BACKGROUND_COLOR_START, BACKGROUND_COLOR_END]}
-        style={{flex: 1, paddingTop: 40, paddingHorizontal: 20, paddingRight: 18}}>
+        style={{flex: 1, paddingTop: 40, paddingHorizontal: 20, paddingRight: 18, ...(style as object)}}>
         {children}
     </LinearGradient>
 )
@@ -35,7 +36,7 @@ const Gradient = styled(LinearGradient)`
     align-items: center;
 `
 // Allow style to be passed by `styled-component`
-export const GradientTag: React.FC<{style?: object}> = ({children, style}) => (
+export const GradientTag: React.FC<{style?: StyleProp<ViewStyle>}> = ({children, style}) => (
     <Gradient useAngle style={style} angle={343.4} colors={[SECONDARY, PRIMARY]}>
         {children}
     </Gradient>
@@ -58,3 +59,16 @@ export const GradientIcon: React.FC<IconProps> = props => (
         </LinearGradient>
     </MaskedView>
 )
+
+export const Name = styled.Text`
+    font-family: ${FONT_WEIGHT_STYLE[700]};
+    font-size: 14px;
+    line-height: 25px;
+`
+
+export const Content = styled.Text`
+    font-family: ${FONT_WEIGHT_STYLE[300]};
+    font-size: 12px;
+    line-height: 15px;
+    color: ${GRAY};
+`

@@ -3,7 +3,20 @@ import {TouchableHighlight} from 'react-native'
 import styled from 'styled-components/native'
 
 import {Message} from '../model'
-import {FONT_WEIGHT_STYLE, GRAY, PRIMARY} from '../theme'
+import {PRIMARY} from '../theme'
+import {Content, Name} from './Shared'
+
+export const ChatMessage: React.FC<{message: Message}> = ({message: {avatar, name, message}}) => (
+    <TouchableHighlight underlayColor={PRIMARY}>
+        <Container>
+            <Avatar source={{uri: avatar}} />
+            <UserInfo>
+                <Name>{name}</Name>
+                <Content>{message}</Content>
+            </UserInfo>
+        </Container>
+    </TouchableHighlight>
+)
 
 const Container = styled.View`
     flex-direction: row;
@@ -20,27 +33,3 @@ const UserInfo = styled.View`
     flex-direction: column;
     justify-content: center;
 `
-const Name = styled.Text`
-    font-family: ${FONT_WEIGHT_STYLE[700]};
-    font-size: 14px;
-    line-height: 20px;
-`
-
-const Content = styled.Text`
-    font-family: ${FONT_WEIGHT_STYLE[300]};
-    font-size: 12px;
-    line-height: 15px;
-    color: ${GRAY};
-`
-
-export const ChatMessage: React.FC<{message: Message}> = ({message: {avatar, name, message}}) => (
-    <TouchableHighlight underlayColor={PRIMARY}>
-        <Container>
-            <Avatar source={{uri: avatar}} />
-            <UserInfo>
-                <Name>{name}</Name>
-                <Content>{message}</Content>
-            </UserInfo>
-        </Container>
-    </TouchableHighlight>
-)
