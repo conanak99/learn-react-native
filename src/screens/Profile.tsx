@@ -10,9 +10,17 @@ interface Params {
 }
 
 export const Profile: React.FC<NavigationInjectedProps<Params>> = ({navigation}) => {
-    const params = navigation.state.params
-    let profile = params && params.match
-    const isOther = !!profile
+    React.useEffect(() => {
+        // Clear navigation param when navigate away
+        const subscription = navigation.addListener('didBlur', () => {
+            navigation.setParams({match: undefined})
+        })
+
+        return subscription.remove
+    }, [navigation])
+
+    let profile = navigation.getParam('match')
+    const isOther = Boolean(profile)
 
     if (!profile) {
         profile = getUserProfile()

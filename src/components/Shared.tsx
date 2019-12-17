@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleProp, ViewStyle, TouchableHighlight} from 'react-native'
+import {StyleProp, ViewStyle} from 'react-native'
 import styled from 'styled-components/native'
 import MaskedView from '@react-native-community/masked-view'
 import LinearGradient from 'react-native-linear-gradient'

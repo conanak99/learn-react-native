@@ -31,6 +31,8 @@ const Navigator = createMaterialTopTabNavigator(
         },
         Profile: {
             screen: Profile,
+            params: {a: 1},
+
             navigationOptions: {
                 tabBarIcon: e => <Icon name="ios-contact" color={e.tintColor} size={20} />,
             },

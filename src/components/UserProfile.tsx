@@ -1,7 +1,8 @@
 import React from 'react'
+import {View, ScrollView, FlatList, TouchableHighlight} from 'react-native'
+import {NavigationInjectedProps, withNavigation} from 'react-navigation'
 import styled from 'styled-components/native'
 import Icon from 'react-native-vector-icons/Ionicons'
-import {View, ScrollView, FlatList, TouchableHighlight} from 'react-native'
 
 import {Card, Name, Content, Container, MatchTag, GradientTag} from '../components/Shared'
 import {Match} from '../model'
@@ -56,12 +57,21 @@ const ButtonText = styled.Text`
     font-family: ${FONT_WEIGHT_STYLE[400]};
 `
 
+const BackButton = styled.TouchableOpacity`
+    position: absolute;
+    top: 30px;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+`
+
 interface Props {
     profile: Match
     isOther?: boolean
 }
 
-export const UserProfile: React.FC<Props> = ({profile, isOther}) => {
+const UserProfileComponent: React.FC<Props & NavigationInjectedProps> = ({profile, isOther, navigation}) => {
     let scrollView: ScrollView | null = null
 
     React.useEffect(() => {
@@ -69,6 +79,8 @@ export const UserProfile: React.FC<Props> = ({profile, isOther}) => {
             scrollView.scrollTo({x: 0, y: 0, animated: false})
         }
     }, [profile, scrollView])
+
+    const [bgHeight, setBgHeight] = React.useState(600)
 
     const {avatar, name, bio, percent} = profile
     const photos = [
@@ -78,8 +90,6 @@ export const UserProfile: React.FC<Props> = ({profile, isOther}) => {
         'https://source.unsplash.com/random/403x600',
     ]
 
-    const [bgHeight, setBgHeight] = React.useState(600)
-
     return (
         <ScrollView
             ref={view => {
@@ -88,6 +98,15 @@ export const UserProfile: React.FC<Props> = ({profile, isOther}) => {
             style={{display: 'flex'}}
             nestedScrollEnabled={false}>
             <Avatar source={{uri: avatar}} />
+
+            {isOther && (
+                <BackButton
+                    onPress={() => {
+                        navigation.goBack()
+                    }}>
+                    <Icon name="ios-arrow-back" color="white" size={40} />
+                </BackButton>
+            )}
 
             <View style={{position: 'relative', zIndex: 2}}>
                 <UserContainer
@@ -137,3 +156,5 @@ export const UserProfile: React.FC<Props> = ({profile, isOther}) => {
         </ScrollView>
     )
 }
+
+export const UserProfile = withNavigation(UserProfileComponent)
