@@ -7,7 +7,6 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import {Card, Name, Content, Container, MatchTag, GradientTag} from '../components/Shared'
 import {Match} from '../model'
 import {FONT_WEIGHT_STYLE} from '../theme'
-import {usePromise} from '../hooks'
 import {getImages} from '../services/imageService'
 
 const Avatar = styled.Image`
