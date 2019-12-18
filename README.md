@@ -1,0 +1,2 @@
+-   `react-navigation-tabs` v2 has wrong "back" behaviour https://github.com/react-navigation/material-bottom-tabs/issues/57
+-   To fix this, need to go back to v1, but this will makes typing of `styled-components` become `any` 🤷‍♂️. v1 does not support any typing either
