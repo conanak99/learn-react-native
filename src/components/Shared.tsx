@@ -1,6 +1,7 @@
 import React from 'react'
 import {StyleProp, ViewStyle} from 'react-native'
 import styled from 'styled-components/native'
+import {NavigationInjectedProps, withNavigation} from 'react-navigation'
 import MaskedView from '@react-native-community/masked-view'
 import LinearGradient from 'react-native-linear-gradient'
 import {IconProps} from 'react-native-vector-icons/Icon'
@@ -92,3 +93,28 @@ export const MatchTag: React.FC<{percent: number}> = ({percent}) => (
         </MatchText>
     </MatchPercent>
 )
+
+const BackButtonWrapper = styled.TouchableOpacity`
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    z-index: 2;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+`
+const ShadowIcon = styled(Icon)`
+    text-shadow: 2px 2px black;
+`
+
+const BackButtonComp: React.FC<NavigationInjectedProps> = ({navigation}) => (
+    <BackButtonWrapper
+        onPress={() => {
+            navigation.goBack()
+        }}>
+        <ShadowIcon name="ios-arrow-back" color="white" size={40} />
+    </BackButtonWrapper>
+)
+
+export const BackButton = withNavigation(BackButtonComp)

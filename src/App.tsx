@@ -1,6 +1,7 @@
 import React from 'react'
 import {YellowBox} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
+import {createStackNavigator} from 'react-navigation-stack'
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs'
 import {createAppContainer} from 'react-navigation'
 
@@ -10,16 +11,38 @@ import {Matches} from './screens/Matches'
 import {Profile} from './screens/Profile'
 import {PRIMARY, FONT_WEIGHT_STYLE} from './theme'
 
+const MatchStack = createStackNavigator(
+    {
+        Matches: Matches,
+        Profile: Profile,
+    },
+    {
+        initialRouteName: 'Matches',
+        headerMode: 'none',
+    },
+)
+
+const ExploreStack = createStackNavigator(
+    {
+        Explore: Explore,
+        Profile: Profile,
+    },
+    {
+        initialRouteName: 'Explore',
+        headerMode: 'none',
+    },
+)
+
 const Navigator = createMaterialTopTabNavigator(
     {
         Explore: {
-            screen: Explore,
+            screen: ExploreStack,
             navigationOptions: {
                 tabBarIcon: e => <Icon name="ios-search" color={e.tintColor} size={20} />,
             },
         },
         Matches: {
-            screen: Matches,
+            screen: MatchStack,
             navigationOptions: {
                 tabBarIcon: e => <Icon name="ios-heart" color={e.tintColor} size={20} />,
             },

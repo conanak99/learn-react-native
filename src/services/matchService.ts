@@ -1,5 +1,5 @@
 import moment from 'moment'
-import {getRandomElement, shuffle} from './helper'
+import {getRandomElement, shuffle} from './helpers/arrayHelper'
 import json from './idols_translated.json'
 import {Match, Idol, Message} from '../model'
 

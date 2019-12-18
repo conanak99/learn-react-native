@@ -1,10 +1,9 @@
 import React from 'react'
 import {View, ScrollView, FlatList, TouchableHighlight} from 'react-native'
-import {NavigationInjectedProps, withNavigation} from 'react-navigation'
 import styled from 'styled-components/native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-import {Card, Name, Content, Container, MatchTag, GradientTag} from '../components/Shared'
+import {Card, Name, Content, Container, MatchTag, GradientTag, BackButton} from '../components/Shared'
 import {Match} from '../model'
 import {FONT_WEIGHT_STYLE} from '../theme'
 import {getImages} from '../services/imageService'
@@ -58,15 +57,6 @@ const ButtonText = styled.Text`
     font-family: ${FONT_WEIGHT_STYLE[400]};
 `
 
-const BackButton = styled.TouchableOpacity`
-    position: absolute;
-    top: 30px;
-    width: 60px;
-    height: 60px;
-    align-items: center;
-    justify-content: center;
-`
-
 const FullInfo = styled.View`
     width: 100%;
     padding-left: 10px;
@@ -78,13 +68,13 @@ interface Props {
     isOther?: boolean
 }
 
-const UserProfileComponent: React.FC<Props & NavigationInjectedProps> = ({profile, isOther, navigation}) => {
+export const UserProfile: React.FC<Props> = ({profile, isOther}) => {
     const [bgHeight, setBgHeight] = React.useState(600)
     const defaultPhotos = [
-        'https://source.unsplash.com/random/400x600',
-        'https://source.unsplash.com/random/401x600',
-        'https://source.unsplash.com/random/400x601',
-        'https://source.unsplash.com/random/401x601',
+        'https://scontent.fsin9-1.fna.fbcdn.net/v/t1.0-9/78100273_1015938412101140_7757207945896525824_n.jpg?_nc_cat=102&_nc_ohc=rq9dC1KdEokAQnTHUuOihyYBdvvRsBP4zPH2K-LtaK6C9dHy_uTaaLEFg&_nc_ht=scontent.fsin9-1.fna&oh=1cec82d407b522c1133ba5fbd29c5ae1&oe=5E79D19D',
+        'https://scontent.fsin9-2.fna.fbcdn.net/v/t1.0-9/69452156_944187999276182_1287500374931931136_n.jpg?_nc_cat=106&_nc_ohc=2N_jMNq4lX4AQkFlCatSY-lF5ESyu5n_SkVuox7vdi9wOYLvUyvgti_jw&_nc_ht=scontent.fsin9-2.fna&oh=d8629118db84f0d98a03fa02e4378d49&oe=5E65B90E',
+        'https://scontent.fsin9-1.fna.fbcdn.net/v/t1.0-9/73472736_977051612656487_99310183733264384_n.jpg?_nc_cat=105&_nc_ohc=tZTwEujPZw4AQnk-RH62QE9-iGIudFF3Pc-CMfVMRiSFPO_1wzBX5jC4g&_nc_ht=scontent.fsin9-1.fna&oh=497e2b49e5bb3bdf9a280f53027e2017&oe=5E67A61C',
+        'https://scontent.fsin9-2.fna.fbcdn.net/v/t1.0-9/29103652_1864608363609128_907581208743903232_o.jpg?_nc_cat=106&_nc_ohc=6BOf1Zo4pQ4AQmrKSU6dOjIj-GJDhq035U85z12CDQIHkOa58_SgSeYaQ&_nc_ht=scontent.fsin9-2.fna&oh=bac1f4e89045f1c46768309674ae184f&oe=5E7C3418',
     ]
     const [photos, setPhotos] = React.useState(defaultPhotos)
 
@@ -108,17 +98,9 @@ const UserProfileComponent: React.FC<Props & NavigationInjectedProps> = ({profil
             }}
             style={{display: 'flex'}}
             nestedScrollEnabled={false}>
-            <Avatar source={{uri: avatar}} />
+            {isOther && <BackButton />}
 
-            {isOther && (
-                <BackButton
-                    onPress={() => {
-                        //This only work with react-navigation-tabs ver 1.0.0
-                        navigation.goBack()
-                    }}>
-                    <Icon name="ios-arrow-back" color="white" size={40} />
-                </BackButton>
-            )}
+            <Avatar source={{uri: avatar}} />
 
             <View style={{position: 'relative', zIndex: 2}}>
                 <UserContainer
@@ -190,5 +172,3 @@ const UserProfileComponent: React.FC<Props & NavigationInjectedProps> = ({profil
         </ScrollView>
     )
 }
-
-export const UserProfile = withNavigation(UserProfileComponent)
